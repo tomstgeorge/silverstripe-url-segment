@@ -146,11 +146,11 @@ class URLSegmentDataObjectExtension extends DataExtension
 
     public function generateUrlSegment(?string $title): string
     {
+        $className = strtolower($this->owner->ClassName);
         if(is_null($title)) {
             return "{$className}-{$this->owner->ID}";
         }
         $filteredTitle = $this->createFilteredUrlSegment($title);
-        $className = strtolower($this->owner->ClassName);
 
         return $filteredTitle && $filteredTitle !== '-' ? $filteredTitle : "{$className}-{$this->owner->ID}";
     }
