@@ -144,8 +144,11 @@ class URLSegmentDataObjectExtension extends DataExtension
         return $filter->filter($content);
     }
 
-    public function generateUrlSegment(string $title): string
+    public function generateUrlSegment(?string $title): string
     {
+        if(is_null($title)) {
+            return "{$className}-{$this->owner->ID}";
+        }
         $filteredTitle = $this->createFilteredUrlSegment($title);
         $className = strtolower($this->owner->ClassName);
 
