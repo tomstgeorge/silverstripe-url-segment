@@ -9,10 +9,10 @@ use Psr\Container\NotFoundExceptionInterface;
 use Psr\Log\LoggerInterface;
 use SilverStripe\Core\Config\Configurable;
 use SilverStripe\Core\Injector\Injector;
-use SilverStripe\ORM\DataExtension;
+use SilverStripe\Core\Extension;
 use SilverStripe\View\Parsers\URLSegmentFilter;
 
-class URLSegmentDataObjectExtension extends DataExtension
+class URLSegmentDataObjectExtension extends Extension
 {
     use Configurable;
 
