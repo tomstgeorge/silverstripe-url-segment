@@ -39,8 +39,6 @@ class URLSegmentDataObjectExtension extends Extension
      */
     public function onBeforeWrite(): void
     {
-        parent::onBeforeWrite();
-
         if (!$this->owner->hasField('URLSegment')) {
             return;
         }
