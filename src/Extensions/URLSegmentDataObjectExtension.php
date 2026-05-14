@@ -45,14 +45,19 @@ class URLSegmentDataObjectExtension extends Extension
             return;
         }
 
+        $title = $this->owner->Title;
+        if (!$title) {
+            return;
+        }
+
         $pageTitle = $this->getPageTitle();
 
         if (!$this->owner->URLSegment) {
-            $this->owner->URLSegment = $this->generateUrlSegment($this->owner->Title);
+            $this->owner->URLSegment = $this->generateUrlSegment($title);
         }
 
         if (!$this->owner->isInDB() || $this->owner->isChanged('Title', 2)) {
-            $this->owner->URLSegment = $this->generateUrlSegment($pageTitle ? "$pageTitle-{$this->owner->Title}" : $this->owner->Title);
+            $this->owner->URLSegment = $this->generateUrlSegment($pageTitle ? "$pageTitle-{$title}" : $title);
             $this->makeUrlSegmentUnique();
         } elseif ($this->owner->isChanged('URLSegment', 2)) {
             $this->owner->URLSegment = $this->generateUrlSegment($this->owner->URLSegment);
